@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import ReactDOM from 'react-dom/client'; // Import createRoot from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 
 // Mock API to simulate fetching and sending data
 const mockTicketsData = [
@@ -47,7 +47,7 @@ const mockTicketsData = [
   },
 ];
 
-// Simulate API calls with a delay
+
 const api = {
   fetchTickets: async () => {
     return new Promise(resolve => setTimeout(() => resolve(mockTicketsData), 500));
@@ -55,7 +55,7 @@ const api = {
   fetchTicketById: async (ticketId) => {
     return new Promise(resolve => setTimeout(() => {
       const ticket = mockTicketsData.find(t => t.id === ticketId);
-      resolve(ticket ? { ...ticket } : null); // Return a copy to avoid direct mutation
+      resolve(ticket ? { ...ticket } : null); 
     }, 500));
   },
   sendReply: async (ticketId, message, senderRole, senderName) => {
@@ -70,7 +70,7 @@ const api = {
         };
         ticket.thread.push(newReply);
         ticket.updatedAt = newReply.timestamp;
-        ticket.status = 'Open'; // Automatically reopen if a reply is sent
+        ticket.status = 'Open'; 
         resolve(newReply);
       } else {
         resolve(null);
@@ -79,14 +79,14 @@ const api = {
   },
 };
 
-// --- Context for User Role and Navigation ---
+
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [userRole, setUserRole] = useState('customer'); // Default role
+  const [userRole, setUserRole] = useState('customer'); 
   const [currentRoute, setCurrentRoute] = useState('/tickets');
   const [currentTicketId, setCurrentTicketId] = useState(null);
-  const [showRoleSelect, setShowRoleSelect] = useState(false); // State to control visibility of role selection
+  const [showRoleSelect, setShowRoleSelect] = useState(false); 
 
   const navigate = (path) => {
     if (path.startsWith('/tickets/')) {
@@ -156,7 +156,7 @@ const RichTextEditorPortal = ({ onClose, onSendReply, ticketId, currentUser }) =
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Reply to Ticket {ticketId}</h5>
+            <h5 className="modal-title disabled">Reply to Ticket {ticketId}</h5>
             <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
           </div>
           <div className="modal-body">
@@ -296,13 +296,13 @@ const TicketDetail = () => {
 
   useEffect(() => {
     fetchTicket();
-  }, [currentTicketId, currentUser.name, currentUser.role]); // Re-fetch if ticketId or user changes
+  }, [currentTicketId, currentUser.name, currentUser.role]); 
 
   const handleSendReply = async (id, message, senderRole, senderName) => {
     try {
       setLoading(true);
       await api.sendReply(id, message, senderRole, senderName);
-      await fetchTicket(); // Re-fetch the updated ticket thread
+      await fetchTicket(); 
     } catch (err) {
       setError('Failed to send reply.');
       console.error(err);
@@ -381,7 +381,7 @@ const TicketDetail = () => {
       <div className="d-flex justify-content-end">
         <button
           onClick={() => setShowReplyEditor(true)}
-          className="btn btn-primary btn-lg"
+          className="btn btn-primary btn-lg disabled"
         >
           Reply to Ticket
         </button>
@@ -409,12 +409,12 @@ function App() {
 
   const handleRoleChange = (e) => {
     setUserRole(e.target.value);
-    setShowRoleSelect(false); // Hide role selector after selection
+    setShowRoleSelect(false); 
   };
 
   return (
     <div className="min-vh-100 bg-light">
-      {/* Header and Role Selector */}
+  
       <header className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div className="container-fluid">
           <a className="navbar-brand text-primary fw-bold" href="#">Ticket Support</a>
@@ -438,9 +438,7 @@ function App() {
         </div>
       </header>
 
-      {/* Main Content Area */}
       <main className="py-4">
-        {/* Simple router logic */}
         {currentRoute === '/tickets' && <GuardedTicketList />}
         {currentRoute === '/tickets/:ticketId' && <GuardedTicketDetail />}
       </main>
@@ -448,12 +446,10 @@ function App() {
   );
 }
 
-// Export the App component as default
 export default App;
 
-// Add Bootstrap CSS and JS CDN links to the document head and render the app
 const addStylesheetsAndRenderApp = () => {
-  // Bootstrap CSS
+
   const bootstrapCssLink = document.createElement('link');
   bootstrapCssLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
   bootstrapCssLink.rel = 'stylesheet';
@@ -461,20 +457,20 @@ const addStylesheetsAndRenderApp = () => {
   bootstrapCssLink.crossOrigin = 'anonymous';
   document.head.appendChild(bootstrapCssLink);
 
-  // Bootstrap JS (bundle with Popper)
+
   const bootstrapJsScript = document.createElement('script');
   bootstrapJsScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
   bootstrapJsScript.integrity = 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz';
   bootstrapJsScript.crossOrigin = 'anonymous';
-  document.body.appendChild(bootstrapJsScript); // Append to body for proper loading
+  document.body.appendChild(bootstrapJsScript); 
 
-  // Inter Font (optional, but good practice for consistent font)
+
   const interFontLink = document.createElement('link');
   interFontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
   interFontLink.rel = 'stylesheet';
   document.head.appendChild(interFontLink);
 
-  // Custom styles for global font and rounded corners, if not covered by Bootstrap defaults
+
   const customStyle = document.createElement('style');
   customStyle.innerHTML = `
     body { font-family: 'Inter', sans-serif; }
@@ -485,7 +481,6 @@ const addStylesheetsAndRenderApp = () => {
   `;
   document.head.appendChild(customStyle);
 
-  // Ensure the root element exists and render the app
   let rootElement = document.getElementById('root');
   if (!rootElement) {
     const newRoot = document.createElement('div');
@@ -494,7 +489,6 @@ const addStylesheetsAndRenderApp = () => {
     rootElement = newRoot;
   }
 
-  // Use createRoot for React 18+
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <AppProvider>
@@ -503,5 +497,5 @@ const addStylesheetsAndRenderApp = () => {
   );
 };
 
-// Call this function when the DOM is ready
+
 document.addEventListener('DOMContentLoaded', addStylesheetsAndRenderApp);
