@@ -1,0 +1,99 @@
+.ticket-thread {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.ticket-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.ticket-header h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.ticket-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-badge.open {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+.status-badge.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status-badge.resolved {
+  background-color: #4caf50;
+  color: white;
+}
+
+.thread-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.message-header strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.message-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.initial-message {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 3px solid #1976d2;
+}
+
+.reply-message {
+  background-color: #f0f7ff;
+  padding: 20px;
+  border-radius: 6px;
+  margin-left: 30px;
+  position: relative;
+}
+
+.reply-message::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 15px solid #f0f7ff;
+}

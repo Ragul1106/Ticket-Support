@@ -1,0 +1,15 @@
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-controls {
+  margin-bottom: 20px;
+}
+
+.filter-controls select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}

@@ -1,0 +1,78 @@
+.dashboard-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-page h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin-top: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+  color: #333;
+}
+
+.stat-card.total {
+  border-top: 4px solid #1976d2;
+}
+
+.stat-card.open {
+  border-top: 4px solid #ff9800;
+}
+
+.stat-card.pending {
+  border-top: 4px solid #ffeb3b;
+}
+
+.stat-card.resolved {
+  border-top: 4px solid #4caf50;
+}
+
+/* Add these styles to your existing DashboardPage.css */
+.stat-card {
+  /* ... existing styles ... */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.view-all {
+  font-size: 0.8rem;
+  color: #1976d2;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.stat-card:hover .view-all {
+  opacity: 1;
+}

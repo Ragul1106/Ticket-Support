@@ -1,0 +1,73 @@
+.ticket-thread {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+}
+
+.ticket-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.ticket-meta {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-badge.open {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+.status-badge.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status-badge.resolved {
+  background-color: #4caf50;
+  color: white;
+}
+
+.thread-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.message-content {
+  line-height: 1.6;
+}
+
+.initial-message {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.reply-message {
+  background-color: #f0f7ff;
+  padding: 15px;
+  border-radius: 6px;
+  margin-left: 30px;
+}

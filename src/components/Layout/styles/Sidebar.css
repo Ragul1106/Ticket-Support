@@ -1,0 +1,31 @@
+.app-sidebar {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  padding: 20px 0;
+}
+
+.app-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-sidebar li a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.app-sidebar li a:hover {
+  background-color: #f0f7ff;
+}
+
+.app-sidebar li a.active {
+  background-color: #e3f2fd;
+  border-left: 4px solid #1976d2;
+  color: #1976d2;
+  font-weight: 500;
+}
